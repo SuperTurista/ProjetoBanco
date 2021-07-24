@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HeskiFvay9HGyxEd3hT9GSCbezhmKn6uTDaR6LzbuOONz/GJAFRwkLsbb9OjcKPg+2kdjYDxgnc3m/rexLZU4g==",
+  "dgSpecHash": "hfIKcGzYed2p+sW56dhPy9eYTwElsyPYpXjalb3X2enJiyIxz+zBrG45H+aGFMyRpzjDrlUvF8nSTMDTtZw73A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\4 - Domain Tests\\4 - Domain Tests.csproj",
+  "projectFilePath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\4 - Domain Tests\\DomainTests.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
