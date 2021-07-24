@@ -75,6 +75,29 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "2 - Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/2 - Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/2 - Domain.dll": {}
+        }
+      },
+      "3 - Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "2 - Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/3 - Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/3 - Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -185,10 +208,22 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "2 - Domain/1.0.0": {
+      "type": "project",
+      "path": "../2 - Domain/2 - Domain.csproj",
+      "msbuildProject": "../2 - Domain/2 - Domain.csproj"
+    },
+    "3 - Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../3 - Infrastructure/3 - Infrastructure.csproj",
+      "msbuildProject": "../3 - Infrastructure/3 - Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "2 - Domain >= 1.0.0",
+      "3 - Infrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -216,7 +251,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\2 - Domain.csproj": {
+              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\2 - Domain.csproj"
+            },
+            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\3 - Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\3 - Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
