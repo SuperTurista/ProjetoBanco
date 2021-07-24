@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1z6ig4ehYoV+e8MbhjX4wA5iXdb4MuAbqskQyEWn4/K+Hfipr4QMjoB+6IXGIK+CkK0fYixiz2280aKLyRJhfA==",
+  "dgSpecHash": "+hmn+6GPfzuNEVPxZADgXP+RQR6QL8V6t88pCnsq2fqgPvBDGqftUC8aWqqSgpJb3KfvFpyxRomX4JsTmNAYEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
+  "projectFilePath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\binho\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\binho\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

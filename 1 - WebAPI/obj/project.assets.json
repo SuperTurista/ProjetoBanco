@@ -233,11 +233,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
+      "projectPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\binho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\obj\\",
+      "outputPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\binho\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -252,11 +252,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj"
+            "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj": {
+              "projectPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj"
             },
-            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj"
+            "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj"
             }
           }
         }
