@@ -9,7 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "2 - Domain\Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "3 - Infrastructure\Infrastructure.csproj", "{B860070D-D7E6-4356-AD39-BDE619CA4DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests", "4 - DomainTests\DomainTests.csproj", "{07F06916-F395-4AC2-B778-ABCBD2886E1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "4 - DomainTests\Domain.Tests.csproj", "{07F06916-F395-4AC2-B778-ABCBD2886E1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{7A520F10-ECC6-11EB-BED1-57152B0B3EAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{818B4580-ECC6-11EB-BED1-57152B0B3EAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{86AE1F10-ECC6-11EB-BED1-57152B0B3EAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +78,11 @@ Global
 		{07F06916-F395-4AC2-B778-ABCBD2886E1B}.Release|x64.Build.0 = Release|Any CPU
 		{07F06916-F395-4AC2-B778-ABCBD2886E1B}.Release|x86.ActiveCfg = Release|Any CPU
 		{07F06916-F395-4AC2-B778-ABCBD2886E1B}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6028C79-57E6-4B53-9B7B-38CF68C31BA4} = {7A520F10-ECC6-11EB-BED1-57152B0B3EAB}
+		{B860070D-D7E6-4356-AD39-BDE619CA4DB7} = {86AE1F10-ECC6-11EB-BED1-57152B0B3EAB}
+		{07F06916-F395-4AC2-B778-ABCBD2886E1B} = {818B4580-ECC6-11EB-BED1-57152B0B3EAB}
+		{F4A60868-3161-4986-877A-5222E4741AD5} = {818B4580-ECC6-11EB-BED1-57152B0B3EAB}
 	EndGlobalSection
 EndGlobal

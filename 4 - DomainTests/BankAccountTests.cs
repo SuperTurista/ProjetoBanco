@@ -1,103 +1,166 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Domain.Entities;
+using Domain.Entities.Accounts;
+using Domain.Entities.Transactions;
 using Xunit;
 
-namespace DomainTests
+namespace Domain.Tests
 {
     public class BankAccountTests
     {
         [Fact]
-        public void BankDeposit_AddingNewBankDeposit_ShouldIncrementBalance()
+        public void ProcessTransaction_AddingNewTransaction_ShouldSetTransactionInBankStatement()
         {
             //Given
+            var originId = Guid.NewGuid();
             var bankAccount = new BankAccount(Guid.NewGuid());
-            bankAccount.BankDeposit(1);
+            var depositTransaction = new FinancialTransaction(10, originId);
 
-            decimal deposit = 200;
-
-            var balanceToMatch = bankAccount.Balance;
 
             //When
-            bankAccount.BankDeposit(deposit);
+            bankAccount.ProcessTransaction(depositTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance > balanceToMatch);
+            Assert.True(bankStatement.Contains(depositTransaction));
+        }
+
+        [Fact]
+        public void ProcessDepositTransaction_AddingNewBankDepositTransaction_ShouldIncrementBalanceAndBankStatement()
+        {
+            //Given
+            decimal deposit = 200;
+            var originId = Guid.NewGuid();
+            var bankAccount = new BankAccount(Guid.NewGuid());
+            var depositTransaction = new FinancialTransaction(deposit, originId);
+            var originalBalance = bankAccount.Balance;
+
+            //When
+            bankAccount.ProcessTransaction(depositTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
+
+            //Then
+            Assert.True(bankAccount.Balance > originalBalance);
+            Assert.True(bankStatement.Contains(depositTransaction));
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(-3)]
-        public void BankDeposit_AddingNegativeBankDeposit_ShouldNotIncrementBalance(decimal deposit)
+        public void ProcessDepositTransaction_AddingNegativeBankDepositTransaction_ShouldNotIncrementBalanceAndBankStatement(decimal deposit)
         {
             //Given
+            var originId = Guid.NewGuid();
             var bankAccount = new BankAccount(Guid.NewGuid());
-            bankAccount.BankDeposit(1);
-
-            var balanceToMatch = bankAccount.Balance;
+            var depositTransaction = new FinancialTransaction(deposit, originId);
+            var originalBalance = bankAccount.Balance;
 
             //When
-            bankAccount.BankDeposit(deposit);
+            bankAccount.ProcessTransaction(depositTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == balanceToMatch);
+            Assert.True(bankAccount.Balance == originalBalance);
+            Assert.False(bankStatement.Contains(depositTransaction));
         }
 
         [Fact]
-        public void BankDraft_WithZeroBalance_ShouldNotDraft()
+        public void ProcessDraftTransaction_WithZeroBalance_ShouldNotDraftAndIncrementStatement()
         {
             //Given
+            var originId = Guid.NewGuid();
+            var draft = 15;
             var bankAccount = new BankAccount(Guid.NewGuid());
+            var draftTransaction = new FinancialTransaction(draft, originId)
+            {
+                Type = FinancialTransactionType.BankDraft
+            };
+            var originalBalance = bankAccount.Balance;
 
             //When
-            bankAccount.BankDraft(10);
+            bankAccount.ProcessTransaction(draftTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == 0);
+            Assert.True(bankAccount.Balance == originalBalance);
+            Assert.False(bankStatement.Contains(draftTransaction));
         }
 
         [Theory]
         [InlineData(10, 5)]
         [InlineData(10, 7)]
         [InlineData(33, 12)]
-        public void BankDraft_APartOfAccountBalance_ShouldDraftTheValue(decimal bankDeposit, decimal bankDraft)
+        public void ProcessDraftTransaction_WithValueAsPartOfAccountBalance_ShouldDraftTheValueAndIncrementStatement(decimal bankDeposit, decimal bankDraft)
         {
             //Given
+            var originId = Guid.NewGuid();
             var bankAccount = new BankAccount(Guid.NewGuid());
-            bankAccount.BankDeposit(bankDeposit);
+            var depositTransaction = new FinancialTransaction(bankDeposit, originId);
+            var draftTransaction = new FinancialTransaction(bankDraft, originId)
+            {
+                Type = FinancialTransactionType.BankDraft
+            };
 
             //When
-            bankAccount.BankDraft(bankDraft);
+            bankAccount.ProcessTransaction(depositTransaction);
+            bankAccount.ProcessTransaction(draftTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
             Assert.True(bankAccount.Balance == (bankDeposit - bankDraft));
+            Assert.True(bankStatement.Contains(depositTransaction));
+            Assert.True(bankStatement.Contains(draftTransaction));
         }
 
         [Fact]
-        public void BankDradt_LessThanZero_ShouldNotDraft()
+        public void ProcessDraftTransaction_WithNegativeValue_ShouldNotDraftAndIncrementStatement()
         {
             //Given
+            var originId = Guid.NewGuid();
+            var bankDeposit = 3;
+            var bankDraft = -5;
             var bankAccount = new BankAccount(Guid.NewGuid());
-
-            bankAccount.BankDeposit(3);
+            var depositTransaction = new FinancialTransaction(bankDeposit, originId);
+            var draftTransaction = new FinancialTransaction(bankDraft, originId)
+            {
+                Type = FinancialTransactionType.BankDraft
+            };
             //When
-            bankAccount.BankDraft(-5);
+            bankAccount.ProcessTransaction(depositTransaction);
+            bankAccount.ProcessTransaction(draftTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == 3);
+            Assert.True(bankAccount.Balance == bankDeposit);
+            Assert.True(bankStatement.Contains(depositTransaction));
+            Assert.False(bankStatement.Contains(draftTransaction));
         }
 
         [Fact]
-        public void BankDraft_MoreThanBalance_ShoudlNotDraft()
+        public void ProcessDraftTransaction_MoreThanBalance_ShoudlNotDraftAndIncrementStatement()
         {
             //Given
+            var originId = Guid.NewGuid();
+            var bankDeposit = 3;
+            var bankDraft = 15;
             var bankAccount = new BankAccount(Guid.NewGuid());
+            var depositTransaction = new FinancialTransaction(bankDeposit, originId);
+            var draftTransaction = new FinancialTransaction(bankDraft, originId)
+            {
+                Type = FinancialTransactionType.BankDraft
+            };
 
-            bankAccount.BankDeposit(3);
             //When
-            bankAccount.BankDraft(15);
+            bankAccount.ProcessTransaction(depositTransaction);
+            bankAccount.ProcessTransaction(draftTransaction);
+            BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == 3);
+            Assert.True(bankAccount.Balance == bankDeposit);
+            Assert.True(bankStatement.Contains(depositTransaction));
+            Assert.False(bankStatement.Contains(draftTransaction));
         }
 
     }

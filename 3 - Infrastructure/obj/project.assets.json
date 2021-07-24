@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\binho\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\binho\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -51,8 +51,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj": {
-              "projectPath": "c:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj"
+            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj"
             }
           }
         }

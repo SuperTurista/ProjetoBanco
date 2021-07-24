@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Domain.Entities.Accounts;
 
-namespace Domain.Entities
+namespace Domain.Entities.Users
 {
     public class User : Entity
     {
@@ -21,7 +22,6 @@ namespace Domain.Entities
         public string Email { get; set; }
 
         public Address Address { get; set; }
-        
         
         
         public List<BankAccount> BankAccounts { get; set; }
