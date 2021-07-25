@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\2 - Domain.csproj",
-      "projectName": "2 - Domain",
-      "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\2 - Domain.csproj",
+      "projectUniqueName": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj",
+      "projectName": "Domain",
+      "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\binho\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\obj\\",
       "projectStyle": "PackageReference",

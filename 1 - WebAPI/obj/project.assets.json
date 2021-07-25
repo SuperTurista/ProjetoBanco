@@ -76,27 +76,27 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "2 - Domain/1.0.0": {
+      "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
-          "bin/placeholder/2 - Domain.dll": {}
+          "bin/placeholder/Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/2 - Domain.dll": {}
+          "bin/placeholder/Domain.dll": {}
         }
       },
-      "3 - Infrastructure/1.0.0": {
+      "Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "2 - Domain": "1.0.0"
+          "Domain": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/3 - Infrastructure.dll": {}
+          "bin/placeholder/Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/3 - Infrastructure.dll": {}
+          "bin/placeholder/Infrastructure.dll": {}
         }
       }
     }
@@ -209,21 +209,21 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
-    "2 - Domain/1.0.0": {
+    "Domain/1.0.0": {
       "type": "project",
-      "path": "../2 - Domain/2 - Domain.csproj",
-      "msbuildProject": "../2 - Domain/2 - Domain.csproj"
+      "path": "../2 - Domain/Domain.csproj",
+      "msbuildProject": "../2 - Domain/Domain.csproj"
     },
-    "3 - Infrastructure/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../3 - Infrastructure/3 - Infrastructure.csproj",
-      "msbuildProject": "../3 - Infrastructure/3 - Infrastructure.csproj"
+      "path": "../3 - Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../3 - Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "2 - Domain >= 1.0.0",
-      "3 - Infrastructure >= 1.0.0",
+      "Domain >= 1.0.0",
+      "Infrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -233,9 +233,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\1 - WebAPI.csproj",
-      "projectName": "1 - WebAPI",
-      "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\1 - WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
+      "projectName": "WebAPI",
+      "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\binho\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\1 - WebAPI\\obj\\",
       "projectStyle": "PackageReference",
@@ -252,11 +252,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\2 - Domain.csproj": {
-              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\2 - Domain.csproj"
+            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\2 - Domain\\Domain.csproj"
             },
-            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\3 - Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\3 - Infrastructure.csproj"
+            "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\binho\\Desktop\\Git\\conta-bancaria\\ProjetoBancoNando\\3 - Infrastructure\\Infrastructure.csproj"
             }
           }
         }
