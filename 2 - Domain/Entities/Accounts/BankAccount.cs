@@ -20,7 +20,8 @@ namespace Domain.Entities.Accounts
 
         public BankAccountType Type { get; set; }
 
-        public decimal Balance { get; private set; }
+        protected decimal Balance { get; set; }
+        protected decimal InterestRate { get; set; }
 
         public List<FinancialTransaction> FinancialTransactions { get; set; }
 
@@ -58,6 +59,13 @@ namespace Domain.Entities.Accounts
                     BankDraft(financialTransaction);
             }
 
+        }
+        public virtual decimal GetBalance()
+        {
+            if (this.Balance > 0)
+                return (this.Balance * InterestRate) + this.Balance;
+
+            return this.Balance;
         }
 
     }

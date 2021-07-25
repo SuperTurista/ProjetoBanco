@@ -1,5 +1,3 @@
-using System;
-
 namespace Domain.Entities.Accounts
 {
     public enum BankAccountType

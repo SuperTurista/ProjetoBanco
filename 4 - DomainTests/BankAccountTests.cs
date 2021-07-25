@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Domain.Entities;
 using Domain.Entities.Accounts;
 using Domain.Entities.Transactions;
 using Xunit;
@@ -35,14 +32,14 @@ namespace Domain.Tests
             var originId = Guid.NewGuid();
             var bankAccount = new BankAccount(Guid.NewGuid());
             var depositTransaction = new FinancialTransaction(deposit, originId);
-            var originalBalance = bankAccount.Balance;
+            var originalBalance = bankAccount.GetBalance();
 
             //When
             bankAccount.ProcessTransaction(depositTransaction);
             BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance > originalBalance);
+            Assert.True(bankAccount.GetBalance() > originalBalance);
             Assert.True(bankStatement.Contains(depositTransaction));
         }
 
@@ -55,14 +52,14 @@ namespace Domain.Tests
             var originId = Guid.NewGuid();
             var bankAccount = new BankAccount(Guid.NewGuid());
             var depositTransaction = new FinancialTransaction(deposit, originId);
-            var originalBalance = bankAccount.Balance;
+            var originalBalance = bankAccount.GetBalance();
 
             //When
             bankAccount.ProcessTransaction(depositTransaction);
             BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == originalBalance);
+            Assert.True(bankAccount.GetBalance() == originalBalance);
             Assert.False(bankStatement.Contains(depositTransaction));
         }
 
@@ -77,14 +74,14 @@ namespace Domain.Tests
             {
                 Type = FinancialTransactionType.BankDraft
             };
-            var originalBalance = bankAccount.Balance;
+            var originalBalance = bankAccount.GetBalance();
 
             //When
             bankAccount.ProcessTransaction(draftTransaction);
             BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == originalBalance);
+            Assert.True(bankAccount.GetBalance() == originalBalance);
             Assert.False(bankStatement.Contains(draftTransaction));
         }
 
@@ -109,7 +106,7 @@ namespace Domain.Tests
             BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == (bankDeposit - bankDraft));
+            Assert.True(bankAccount.GetBalance() == (bankDeposit - bankDraft));
             Assert.True(bankStatement.Contains(depositTransaction));
             Assert.True(bankStatement.Contains(draftTransaction));
         }
@@ -133,7 +130,7 @@ namespace Domain.Tests
             BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == bankDeposit);
+            Assert.True(bankAccount.GetBalance() == bankDeposit);
             Assert.True(bankStatement.Contains(depositTransaction));
             Assert.False(bankStatement.Contains(draftTransaction));
         }
@@ -158,9 +155,71 @@ namespace Domain.Tests
             BankStatement bankStatement = bankAccount.GetBankStatement();
 
             //Then
-            Assert.True(bankAccount.Balance == bankDeposit);
+            Assert.True(bankAccount.GetBalance() == bankDeposit);
             Assert.True(bankStatement.Contains(depositTransaction));
             Assert.False(bankStatement.Contains(draftTransaction));
+        }
+
+        [Fact]
+        public void GetBalance_AfterDepositSomeValue_ShouldReturn()
+        {
+            //Given
+            var deposit = 10;
+            var bankAccount = new BankAccount(Guid.NewGuid());
+            var depositTransaction = new FinancialTransaction(deposit, Guid.NewGuid());
+
+            //When
+            bankAccount.ProcessTransaction(depositTransaction);
+            var totalBalance = bankAccount.GetBalance();
+
+            //Then
+            Assert.True(totalBalance == deposit);
+        }
+
+        [Fact]
+        public void GetCheckingAccountBalance_AfterDepositSomeValue_ShouldRteurnBalancePlusInterestRate()
+        {
+            //Given
+            var deposit = 10;
+            BankAccount bankAccount = new CheckingAccount(Guid.NewGuid());
+            var depositTransaction = new FinancialTransaction(deposit, Guid.NewGuid());
+
+            //When
+            bankAccount.ProcessTransaction(depositTransaction);
+            var totalBalance = bankAccount.GetBalance();
+
+            //Then
+            Assert.True(totalBalance == ((deposit * 0.05M) + deposit));
+
+        }
+
+        [Fact]
+        public void GetCheckingAccountBalance_WithZeroBalance_ShouldNotComputeInteresRate()
+        {
+            //Given
+            BankAccount bankAccount = new CheckingAccount(Guid.NewGuid());
+
+            //When
+            var totalBalance = bankAccount.GetBalance();
+
+            //Then
+            Assert.True(totalBalance == 0);
+        }
+
+        [Fact]
+        public void GetSavingAccountBalance_AfterDepositSomeValue_ShouldReturnBalancePlusInterestRate()
+        {
+            //Given
+            var deposit = 10;
+            BankAccount bankAccount = new SavingAccount(Guid.NewGuid());
+            var depositTransaction = new FinancialTransaction(deposit, Guid.NewGuid());
+
+            //When
+            bankAccount.ProcessTransaction(depositTransaction);
+            var totalBalance = bankAccount.GetBalance();
+
+            //Then
+            Assert.True(totalBalance == ((deposit * 0.10M) + deposit));
         }
 
     }
